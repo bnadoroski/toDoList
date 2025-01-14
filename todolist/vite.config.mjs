@@ -4,6 +4,7 @@ import Vue from '@vitejs/plugin-vue'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
 import VueRouter from 'unplugin-vue-router/vite'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -12,6 +13,7 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    VitePWA({ registerType: 'autoUpdate' }),
     VueRouter(),
     Vue({
       template: { transformAssetUrls }
