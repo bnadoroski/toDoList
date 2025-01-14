@@ -1,38 +1,26 @@
 <template>
     <div>
-        <v-text-field clearable label="Add Task" v-model="task.title" @keyup.enter="addTask"></v-text-field>
-        <ListTasks :tasks="tasks"/>
+        <v-text-field clearable label="Add Task" :rules="rules" v-model="taskStore.titleTaskCreating" @keyup.enter="taskStore.addTask"></v-text-field>
+        <ListTasks />
     </div>
 </template>
 
 <script setup>
+import { onMounted  } from 'vue';
 import ListTasks from './ListTasks.vue';
-import { ref } from 'vue'
+import { useTaskStore } from '@/store/task'
 
-const tasks = ref([
-    {
-        title: "Estudar Vue",
-        description: "Estudar vue com vuetify"
-    },
-    {
-        title: "Ler Documentação",
-        description: "Ler a documentação do vuetify"
-    }
-])
+const taskStore = useTaskStore()
+const rules = [
+        value => {
+          if (!value || value.length >= 5) return true
 
-const task = ref({
-    title: "",
-    description: ""
+          return 'Você deve adicionar uma task com mais de cinco caracteres.'
+        },
+      ]
+
+onMounted(() => {
+    taskStore.getTasks()
 })
 
-const addTask = () => {
-    tasks.value.push({
-        title: task.value.title,
-        description: task.value.description
-    })
-    task.value = {
-        title: "",
-        description: ""
-    }
-}
 </script>

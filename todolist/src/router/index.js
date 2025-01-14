@@ -8,10 +8,14 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
+import Home from "@/pages/Home.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+  routes: [
+    { path: '/', component: Home }, // Definindo a rota para Home
+    ...routes // Adicionando as rotas automáticas
+  ],
 })
 
 // Workaround for https://github.com/vitejs/vite/issues/11804

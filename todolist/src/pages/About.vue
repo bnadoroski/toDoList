@@ -1,11 +1,9 @@
 <template>
-  <h2 class="navbar-title">abc</h2>
+    <About/>
 </template>
 
-<script>
-export default {
-
-}
+<script setup>
+import About from '@/components/about/About.vue'
 </script>
 
 <style>
