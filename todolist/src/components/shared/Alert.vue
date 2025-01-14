@@ -12,6 +12,7 @@ const alertStore = useAlertStore()
 </script>
 
 <style lang="sass" scoped>
+@use "@/styles/settings"
 
 .alert-notification
     position: fixed
@@ -20,4 +21,6 @@ const alertStore = useAlertStore()
     width: 100%
     padding: 0 40%
 
+    @include settings.mobile
+        padding: 0 20%
 </style>
