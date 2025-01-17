@@ -1,7 +1,7 @@
 <template>
     <div class="text-center pa-4">
-        <v-dialog v-model="taskStore.showDialogDelete" min-width="400" max-width="600" persistent>
-            <v-card prepend-icon="mdi-map-marker"
+        <v-dialog v-model="taskStore.showDialogDelete" min-width="325" max-width="600" persistent>
+            <v-card 
                 text="Esta ação não pode ser revertida"
                 title="Deseja remover essa tarefa?">
                 <template v-slot:actions>

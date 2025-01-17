@@ -2,15 +2,14 @@
     <div class="text-center pa-4">
       <v-dialog
         v-model="taskStore.showDialogTaskFields"
-        min-width="400"
+        min-width="325"
         max-width="600"
         persistent
       >
         <v-card>
-            <v-card-title>Editar Task</v-card-title>
+            <v-card-title>Editar Atividade</v-card-title>
             <v-card-text>
-                <v-text-field v-model="props.task.title" label="Título"></v-text-field>
-                <v-text-field v-model="props.task.description" label="Descrição"></v-text-field>
+                <v-text-field v-model="props.task.title" label="Atividade"></v-text-field>
             </v-card-text>
           <template v-slot:actions>
             <v-spacer></v-spacer>

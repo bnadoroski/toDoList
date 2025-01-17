@@ -1,26 +1,26 @@
 <template>
-    <div>
-        <v-text-field clearable label="Add Task" :rules="rules" v-model="taskStore.titleTaskCreating" @keyup.enter="taskStore.addTask"></v-text-field>
-        <ListTasks />
-    </div>
+  <div >
+    <ListTasks />
+    <ButtonFloat/>
+    <DialogCreateTask />
+    <DialogCreateTitle />
+    <DialogDeleteTitle />
+  </div>
 </template>
 
 <script setup>
-import { onMounted  } from 'vue';
+import { onMounted } from 'vue';
 import ListTasks from './ListTasks.vue';
 import { useTaskStore } from '@/store/task'
+import ButtonFloat from './shared/ButtonFloat.vue';
+import DialogCreateTitle from '@/components/dialogs/DialogCreateTitle.vue';
+import DialogCreateTask from '@/components/dialogs/DialogCreateTask.vue';
+import DialogDeleteTitle from '@/components/dialogs/DialogDeleteTitle.vue';
 
 const taskStore = useTaskStore()
-const rules = [
-        value => {
-          if (!value || value.length >= 5) return true
-
-          return 'Você deve adicionar uma task com mais de cinco caracteres.'
-        },
-      ]
 
 onMounted(() => {
-    taskStore.getTasks()
+  taskStore.getTasks()
 })
 
 </script>
