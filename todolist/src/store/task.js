@@ -6,20 +6,6 @@ export const useTaskStore = defineStore('task', {
         tasks: [
         ],
         items: [
-            { type: 'subheader', title: 'Today' },
-            {
-              title: 'Brunch this weekend?', done: false
-            },
-            {
-              title: 'Summer BBQ', done: true
-            },
-            { type: 'subheader', title: 'Tomorrow' },
-            {
-              title: 'Brunch this weekend?', done: false
-            },
-            {
-              title: 'Summer BBQ', done: true
-            }
         ],
         dscTaskCreating: "",
         dscTitleCreating: "",
