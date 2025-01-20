@@ -2,11 +2,11 @@
     <div class="text-center pa-4">
         <v-dialog v-model="taskStore.showDialogDeleteTitle" min-width="325" max-width="600">
             <v-card>
-                <v-card-title>Deletar Título</v-card-title>
+                <v-card-title>Deletar Grupo</v-card-title>
                 <v-card-text>
                     <v-select
                         clearable
-                        label="Título"
+                        label="Grupo"
                         :items="taskStore.listSubheaders"
                         v-model="taskStore.dscTitleCreating"
                     ></v-select>

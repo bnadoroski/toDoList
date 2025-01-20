@@ -15,27 +15,27 @@ export const useAlertStore = defineStore('alert', {
         },
         notifyAlertCreated() {
             this.type = "success"
-            this.text = "Atividade criada com sucesso!"
+            this.text = "Item criado com sucesso!"
             this.notifyAlert()
         },
         notifyAlertCreatedTitle() {
             this.type = "success"
-            this.text = "Título criado com sucesso!"
+            this.text = "Grupo criado com sucesso!"
             this.notifyAlert()
         },
         notifyAlertDeleted() {
             this.type = "warning"
-            this.text = "Atividade removida!"
+            this.text = "Item removido!"
             this.notifyAlert()
         },
         notifyAlertDeletedTitle() {
             this.type = "warning"
-            this.text = "Título e suas atividades removidos!"
+            this.text = "Grupo e seus itens removidos!"
             this.notifyAlert()
         },
         notifyAlertUpdated() {
             this.type = "primary"
-            this.text = "Atividade editada com sucesso!"
+            this.text = "Item editado com sucesso!"
             this.notifyAlert()
         }
     }

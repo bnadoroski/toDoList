@@ -2,7 +2,8 @@
     <div>
         <div class="buttons-position">
             <v-fab :active="!hiddenAddBtn" class="btn-float me-4" icon="mdi-plus" location="bottom end"
-                absolute offset size="64" color="teal-accent-4" @click="openOptions()"></v-fab>
+                absolute offset size="64" color="teal-accent-4" v-click-outside="onClickOutside"
+                 @click="openOptions()"></v-fab>
 
             <v-fab :active="!hiddenTaskBtn" class="btn-float-title me-4" icon="mdi mdi-calendar-edit-outline"
                 location="bottom end" absolute offset color="light-green-darken-1" @click="openCreateTask()"></v-fab>
@@ -22,6 +23,12 @@ const taskStore = useTaskStore()
 const hiddenAddBtn = ref(false);
 const hiddenTitleBtn = ref(true);
 const hiddenTaskBtn = ref(true);
+
+const onClickOutside = () => {
+    hiddenAddBtn.value = false
+    hiddenTitleBtn.value = true
+    hiddenTaskBtn.value = true
+}
 
 const openOptions = () => {
     hiddenAddBtn.value = !hiddenAddBtn.value

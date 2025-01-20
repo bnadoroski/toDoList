@@ -2,15 +2,15 @@
   <div class="text-center pa-4">
     <v-dialog v-model="taskStore.showDialogCreateTitle" min-width="325" max-width="600">
       <v-card>
-        <v-card-title>Criar Título</v-card-title>
+        <v-card-title>Criar Grupo</v-card-title>
         <v-card-text>
-          <v-text-field :rules="rules" v-model="taskStore.dscTitleCreating" label="Título"></v-text-field>
+          <v-text-field :rules="rules" v-model="taskStore.dscTitleCreating" label="Grupo"></v-text-field>
         </v-card-text>
 
         <template v-slot:actions>
           <v-spacer></v-spacer>
           <v-btn @click="taskStore.toggleDeleteTitle()" color="red" variant="text">
-            Deletar um Título
+            Deletar um Grupo
           </v-btn>
           <v-btn @click="taskStore.addTitle()" color="green" variant="elevated">
             Ok

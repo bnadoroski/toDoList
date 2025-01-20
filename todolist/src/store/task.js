@@ -23,10 +23,10 @@ export const useTaskStore = defineStore('task', {
         this.listSubheaders = this.items.filter(x => x.type === 'subheader').map(obj => { return { title: obj.title }})
     },
     addTask() {
-        if(this.dscTaskCreating.length < 5) return
-        const idxTitle = this.items.indexOf(this.items.find(x => x.title == this.dscTitleCreating)) + 1
+        if(this.dscTaskCreating.length < 5 || this.dscTitleCreating === '') return
+        const idxTitle = this.items.findIndex(x => x.title == this.dscTitleCreating) + 1
         this.items.splice(idxTitle, 0, {
-            title: this.dscTaskCreating, done: false
+            title: this.dscTaskCreating, group: this.items.find(x => x.title == this.dscTitleCreating).group, done: false
         })
         this.toggleCreateTask()
         this.dscTaskCreating = ""
@@ -36,7 +36,7 @@ export const useTaskStore = defineStore('task', {
     },
     addTitle() {
         if(this.dscTitleCreating.length < 5) return
-        this.items.push({ type: 'subheader', title: this.dscTitleCreating },);
+        this.items.push({ type: 'subheader', group: this.items.length + 1, title: this.dscTitleCreating },);
         this.toggleCreateTitle()
         this.dscTitleCreating = ""
         this.saveLocalData()
@@ -97,10 +97,39 @@ export const useTaskStore = defineStore('task', {
         if(itemsStorage)
             this.items = JSON.parse(itemsStorage)
     },
-    toggleDoneTask(title) {
-        const idxTitle = this.items.indexOf(this.items.find(x => x.title == title)) 
-        this.items[idxTitle].done = !this.items[idxTitle].done 
+    toggleDoneTask(index) {
+        this.items[index].done = !this.items[index].done 
         this.saveLocalData()
+    },
+    orderTasks() {
+        //pega os grupos
+        this.items.filter(x => x.type === 'subheader').sort((a, b) => {
+            const nameA = a.title.toUpperCase(); 
+            const nameB = b.title.toUpperCase(); 
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+          
+            return 0;
+          }).map(item => item.group)
+
+          //ordenar pelos grupos
+          this.items.filter(x => x.group == 0 && !x.type).sort((a, b) => {
+            const nameA = a.title.toUpperCase(); 
+            const nameB = b.title.toUpperCase(); 
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+          
+            return 0;
+          })
+
     }
   }
 })
